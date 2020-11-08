@@ -1,7 +1,7 @@
 [submodule "ERPv-server"]
-    path = ERPv-server
-    url = git@github.com:kissops/ERPv-server.git
+	path = ERPv-server
+	url = git@github.com:kissops/ERPv-server.git
 
 [submodule "ERPv-client"]
-    path = ERPv-client
-    url = git@github.com:kissops/ERPv-client.git
+	path = ERPv-client
+	url = git@github.com:kissops/ERPv-client.git
