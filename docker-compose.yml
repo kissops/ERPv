@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+
+  server:
+    build: 
+      context: ./ERPv-server/
+      args:
+        - DATABASE_URL=$DATABASE_URL
+        - SECRET_KEY=$SECRET_KEY
+    ports:
+      - 8000:8000
+    links:
+      - postgres
+    env_file: 
+      - .env
+
+  client:
+    build:
+      context: ./ERPv-client/
+      args:
+        - REACT_APP_API_URL=$REACT_APP_API_URL
+    ports:
+      - 5000:5000
+    links:
+      - server
+    env_file:
+      - .env
+
+  postgres:
+    build: ./ERPv-server/.devcontainer/postgres/
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: erpv
+      POSTGRES_PASSWORD: erpv
+      POSTGRES_USER: erpv
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
