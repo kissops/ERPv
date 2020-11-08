@@ -28,7 +28,7 @@ services:
       - .env
 
   postgres:
-    build: ./ERPv-server/.devcontainer/postgres/
+    build: ./PostgreSQL/
     restart: unless-stopped
     ports:
       - 5432:5432
